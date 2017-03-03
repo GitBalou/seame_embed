@@ -46,7 +46,7 @@ module.exports = function(grunt) {
                     livereload: true
                 },
                 files: [
-                    "www/*"
+                    "www/**"
                 ]
             }
         }
