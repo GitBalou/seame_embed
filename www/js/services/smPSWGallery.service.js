@@ -1,20 +1,14 @@
 // service de gestion de la bibliothèque d'image PSW
-seaMe.factory('smPSWGallery', ['$q', function($q){
+seaMe.factory('smPSWGallery', [ function(){
 
     // variables globales
     var listImagesGallerie=[]; // variable globale contenant les infos sur les images à afficher
     var gallery; // gallerie pws
+
     // Fonction remettant la galerie à zéro si nécessaire
     function PSWresetGallerie()
     {
         listImagesGallerie=[];
-    }
-
-    // Fonction ajoutant une image à la gallerie
-    function PSWaddImage( src, width, height)
-    {
-        temp= {src: src, w:width, h: height};
-        listImagesGallerie.push(temp);
     }
 
     // Fonction ajoutant une image à la gallerie
@@ -23,9 +17,9 @@ seaMe.factory('smPSWGallery', ['$q', function($q){
         // init de l'image
         var img = new Image();
 
-        // au chargement de l'image, calcul des coordonnées et ajout à la gallerie
+        // au chargement de l'image, calcul des dimensions et ajout à la gallerie
         img.onload = function(){
-            temp= {src: src, w:this.width, h: this.height};
+            var temp= {src: src, w:this.width, h: this.height};
 
             listImagesGallerie.push(temp);
         };
@@ -63,12 +57,6 @@ seaMe.factory('smPSWGallery', ['$q', function($q){
         gallery.init();
     }
 
-    // Fonction retournant la résolution de l'écran
-    function getResolution()
-    {
-        return [ screen.width, screen.height];
-    }
-
     return {
         reset: function(){
             return PSWresetGallerie();
@@ -76,7 +64,7 @@ seaMe.factory('smPSWGallery', ['$q', function($q){
 
         init: function(images){
             // Ajout des images à la gallerie
-            for( i=0; i < images.length; i++)
+            for( var i=0; i < images.length; i++)
             {
                 PSWpushImage("http://seame.alwaysdata.net/" + images[i]);
             }

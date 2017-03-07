@@ -6,193 +6,33 @@
 
     <link rel="stylesheet" href="css/style.min.css">
 
-    <script src="js/app.js"></script>
+
+    <script src="js/optimized.js"></script>
 </head>
 
-<body ng-app="embed_seame" ng-controller="seameCtrl" class="seame_embed">
+<body ng-app="embed_seame" class="seame_embed">
 
-<!-- header -->
-<div class="seame_embed_header">
-    <!-- pseudo-->
-    <h2>{{user.pseudo}}</h2>
+    <!-- header -->
+    <nav class="seame_embed_header" ng-controller="navCtrl">
+        <!--logo-->
+        <span class="logo">
+            <img src="img/icon_web.png" alt="logo sea.me" title="logo sea.me" />
+        </span>
 
-    <!--boutons -->
-    <p ng-click="listeNavigations()" ng-show="mode != 'liste_navigations'">Navigations</p>
-</div>
+        <!-- pseudo-->
+        <span class="pseudo">
+            Voici les sorties en mer de {{user.pseudo}}
+        </span>
 
-<!-- Informations sur la route -->
-<div class="seame_embed_column" ng-show="showInfosNav">
-    <div class="header navigation">
+        <!--boutons -->
+        <span class="boutons">
+            <button ui-sref="about" ng-if="afficheCarte">En savoir plus</button>
+            <button ui-sref="carte" ng-if="!afficheCarte">Retour à la carte</button>
+        </span>
+    </nav>
 
-        <!-- titre de la nav -->
-        <p>{{navigation.nom_route}}</p>
+    <!-- zone d'affichage-->
+    <div ui-view></div>
 
-        <!-- icone de fermeture -->
-        <i class="fa fa-times" aria-hidden="true" ng-click="showInfosNav = false"></i>
-
-    </div>
-
-    <!--Infos-->
-    <div class="infos">
-        <table>
-            <tr>
-                <td>Distance</td>
-                <td>vitesse moyenne</td>
-                <td>Temps de parcours</td>
-            </tr>
-            <tr>
-                <td>{{navigation.distance}}</td>
-                <td>{{navigation.vitesse}}</td>
-                <td>{{navigation.temps}}</td>
-            </tr>
-        </table>
-    </div>
-</div>
-
-<!-- Informations sur le PI -->
-<div class="seame_embed_column" ng-show="showInfosPI">
-    <div class="header PI">
-
-        <!-- titre de la nav -->
-        <p>
-            {{PI.titre}}
-        </p>
-
-        <!-- icone de fermeture -->
-        <i class="fa fa-times" aria-hidden="true" ng-click="showInfosPI = false"></i>
-
-    </div>
-
-    <!--infos-->
-    <div class="infos">
-        <table>
-            <tr>
-                <th>Jour</th>
-                <th>Heure</th>
-                <th>Latitude</th>
-                <th>Longitude</th>
-                <th>CoG</th>
-                <th>SoG</th>
-                <th>CtS</th>
-                <th>Gv</th>
-                <th>Foc</th>
-                <th>Log</th>
-                <th>Moteur</th>
-                <th>Nuages</th>
-                <th>Pression</th>
-                <th>Remarque</th>
-                <th>Vent: direction</th>
-                <th>Vent: vitesse</th>
-            </tr>
-            <tr>
-                <td>{{PI.heure | date : "dd/MM/yyyy"}}</td>
-                <td>{{PI.heure | date : "H:mm"}}</td>
-                <td>{{PI.latitude}}</td>
-                <td>{{PI.longitude}}</td>
-                <td>{{PI.cog}}</td>
-                <td>{{PI.sog}}</td>
-                <td>{{PI.cts}}</td>
-                <td>{{PI.gv_index}}</td>
-                <td>{{PI.foc_index}}</td>
-                <td>{{PI.log}}</td>
-                <td>{{PI.moteur}}</td>
-                <td>{{PI.nuages}}</td>
-                <td>{{PI.pression}}</td>
-                <td>{{PI.remarque}}</td>
-                <td>{{PI.vent_deg}}</td>
-                <td>{{PI.vent_vitesse}}</td>
-            </tr>
-        </table>
-    </div>
-</div>
-
-<!--div ol3-->
-<div id="seame_embed_map">
-    <div id="popup" class="ol-popup">
-        <a href="#" id="popup-closer" class="ol-popup-closer"></a>
-        <div id="popup-content"></div>
-    </div>
-</div>
-
-<!--diaporama-->
-<div class="seame_embed_diaporama">
-    <div class="diaporama_nav" ng-repeat="route in liste_images" ng-click="showNavigation(route.id_route)">
-
-        <div class="liste_images" >
-            <img ng-src="http://seame.alwaysdata.net/{{image}}" ng-repeat="image in route.images track by $index" ng-if="$index < 3" alt="vignette" />
-        </div>
-
-        <div class="nom">
-            <p>{{route.nom_route}}</p>
-        </div>
-    </div>
-</div>
-
-<!-- TOUT CE QUI SUIT EST POUR PHOTOSWIPE-->
-<!-- Root element of PhotoSwipe. Must have class pswp. -->
-<div class="pswp" id="pswp" tabindex="-1" role="dialog" hidden="true">
-
-    <!-- Background of PhotoSwipe.
-         It's a separate element, as animating opacity is faster than rgba(). -->
-    <div class="pswp__bg"></div>
-
-    <!-- Slides wrapper with overflow:hidden. -->
-    <div class="pswp__scroll-wrap">
-
-        <!-- Container that holds slides. PhotoSwipe keeps only 3 slides in DOM to save memory. -->
-        <div class="pswp__container">
-            <!-- don't modify these 3 pswp__item elements, data is added later on -->
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
-
-        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
-        <div class="pswp__ui pswp__ui--hidden">
-
-            <div class="pswp__top-bar">
-
-                <!--  Controls are self-explanatory. Order can be changed. -->
-
-                <div class="pswp__counter"></div>
-
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-                <!--
-                <button class="pswp__button pswp__button--share" title="Share"></button>
-
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-                -->
-                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
-                <!-- element will get class pswp__preloader--active when preloader is running -->
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                        <div class="pswp__preloader__cut">
-                            <div class="pswp__preloader__donut"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div>
-            </div>
-
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
 </body>
 </html>

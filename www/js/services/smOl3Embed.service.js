@@ -525,7 +525,6 @@ seaMe.factory('smOl3Embed', ['$rootScope', function($rootScope){
     // Fonction mettant en avant une feature lors d'un survol de la souris
     function displayInfo(evt)
     {
-
         // Repérer la feature sous la souris
         var coord= map.getEventPixel(evt.originalEvent);
         var feature = map.forEachFeatureAtPixel(coord, function(feature, layer) {
@@ -571,7 +570,6 @@ seaMe.factory('smOl3Embed', ['$rootScope', function($rootScope){
 
                     // on cache le popup
                     overlay.setPosition(undefined);
-                    popup_closer.blur();
 
                     // enregistrement du PI actif
                     id_PI_active= this.id; // pour casser les pointeurs
@@ -619,26 +617,9 @@ seaMe.factory('smOl3Embed', ['$rootScope', function($rootScope){
             // enregistrement du PI actif
             id_PI_active= id;
 
-            // détermination de l'icone du popup en fonction du type
-            var icon_src= "";
-            if( type == 'arrivee')
-                icon_src= CONF_icon_finish;
-            if( type == 'depart')
-                icon_src= CONF_icon_start;
-            if( type == 'photos')
-                icon_src= CONF_icon_camera;
-
             // div contenant l'en tête
             var en_tete= document.createElement("div");
             en_tete.className = "popup_en_tete";
-
-            // création de l'icone
-            var icon = document.createElement("img");
-            icon.className = "popup_icon";
-            icon.src= icon_src;
-
-            // ajout de l'icone à l'en tête
-            en_tete.appendChild(icon);
 
             // texte avec le type
             var titre = document.createElement("span");

@@ -2,7 +2,7 @@
 var seaMe= angular.module("embed_seame",['ui.router']);
 
 // configuration d'ui-router
-seaMe.config(function($stateProvider, $urlRouterProvider){
+seaMe.config(['$stateProvider','$urlRouterProvider',function($stateProvider, $urlRouterProvider){
 
     // configurations des routes
     $stateProvider
@@ -22,4 +22,4 @@ seaMe.config(function($stateProvider, $urlRouterProvider){
 
     // Par défaut : vue carte
     $urlRouterProvider.otherwise('/carte');
-});
+}]);

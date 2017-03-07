@@ -1,0 +1,35 @@
+{
+  "name": "seame-embed",
+  "description": "Embedded iframe for app sea.me",
+  "main": "",
+  "authors": [
+    "Gabriel Daudin"
+  ],
+  "license": "",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.2",
+    "photoswipe": "^4.1.1",
+    "angular-ui-router": "^0.4.2"
+  },
+  "install": {
+    "path": "www/libs",
+    "sources": {
+      "angular": "bower_components/angular/angular.min.js",
+      "angular-ui-router" : "bower_components/angular-ui-router/release/angular-ui-router.min.js",
+      "photoswipe": [
+        "bower_components/photoswipe/dist/photoswipe-ui-default.min.js",
+        "bower_components/photoswipe/dist/photoswipe.min.js",
+        "bower_components/photoswipe/dist/photoswipe.css",
+        "bower_components/photoswipe/dist/default-skin/default-skin.css"
+      ]
+    }
+  }
+}

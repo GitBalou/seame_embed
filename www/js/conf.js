@@ -1,8 +1,5 @@
 // Configuration javascript
 
-// INITIALISION DES IMAGES PAR DEFAUT
-var CONF_AVATAR_DEFAULT= 'style/avatar_default.png';
-
 // INITIALISATION DE LA CARTE OPENLAYER
 // Coordonnées de démarrage pour centrer la carte
 var CONF_start_center= [-3.2, 47.5];
@@ -31,10 +28,10 @@ var CONF_point_stroke_width= 1;
 
 // STYLE DES TRACES REELLES
 // Couleur de la bordure
-var CONF_ligne_gps_border_color= 'rgba(0,0,0,1)';//'rgba(3,169,244,1)';
+var CONF_ligne_gps_border_color= 'rgba(85,108,137,1)';//'rgba(3,169,244,1)';
 
 // couleur de l'intérieur du trait
-var CONF_ligne_gps_fill_color= 'rgba(3,169,244,1)';
+var CONF_ligne_gps_fill_color= 'rgba(118,158,174,1)';
 
 // épaisseur du trait
 var CONF_ligne_gps_width= 2;
@@ -54,7 +51,7 @@ var CONF_ligne_prev_lineDash= [0.1, 10];
 
 // STYLE DU LABEL
 // Font (écriture similaire au csss)
-var CONF_label_font= '8px Arial, Verdana, Helvetica, sans-serif'
+var CONF_label_font= '8px Arial, Verdana, Helvetica, sans-serif';
 
 // Couleur du texte
 var CONF_label_color= 'rgba(0, 0, 0, 1)';
@@ -87,7 +84,7 @@ var CONF_ligne_width_overlay= 2;
 
 // STYLE DU LABEL EN highlight
 // Font (écriture similaire au csss)
-var CONF_label_font_overlay= 'bold 15px Arial, Verdana, Helvetica, sans-serif'
+var CONF_label_font_overlay= 'bold 15px Arial, Verdana, Helvetica, sans-serif';
 
 // Couleur du texte
 var CONF_label_color_overlay= 'rgba(0, 0,0, 1)';
@@ -101,30 +98,22 @@ var CONF_label_offsetY_overlay=	10;
 // STYLE DES ICONES
 
 // icone de départ
-var CONF_icon_start= "http://seame.alwaysdata.net/style/icon_anchor_start.png";//"style/icon_flag_start.png";
+var CONF_icon_start= "img/icon_anchor_start.png";//"style/icon_flag_start.png";
 
 // icone d'arrivée
-var CONF_icon_finish=  "http://seame.alwaysdata.net/style/icon_anchor_finish.png";//"style/icon_flag_finish.png";
+var CONF_icon_finish=  "img/icon_anchor_finish.png";//"style/icon_flag_finish.png";
 
 // icone de navigation
-var CONF_icon_navigation= "http://seame.alwaysdata.net/style/icon_sailboat.png";
-
-// icone de waypoint
-var CONF_icon_waypoint= "http://seame.alwaysdata.net/style/icon_waypoint.png";
-var CONF_icon_waypoint_X_OFFSET=5;
-var CONF_icon_waypoint_Y_OFFSET=5;
+var CONF_icon_navigation= "img/icon_sailboat.png";
 
 // icone de photo
-var CONF_icon_camera= "http://seame.alwaysdata.net/style/icon_camera.png";
+var CONF_icon_camera= "img/icon_camera.png";
 
 // icone de texte
-var CONF_icon_texte= "http://seame.alwaysdata.net/style/icontexte.png";
-
-// icone du port de référence
-var CONF_icon_maree= "http://seame.alwaysdata.net/style/iconmaree.png";
+var CONF_icon_texte= "img/icontexte.png";
 
 // icone pour la position actuelle
-var CONF_icon_position= "http://seame.alwaysdata.net/style/icon_fleche.png";
+var CONF_icon_position= "img/icon_fleche.png";
 var CONF_icon_position_X_OFFSET= 10;
 var CONF_icon_position_Y_OFFSET= 5;
 

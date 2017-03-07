@@ -20,6 +20,16 @@ module.exports = function(grunt) {
         copy:{
             html: {
                 src: 'www/index.html', dest: 'docs/index.html'
+            },
+            img: {
+                expand: true,
+                flatten: true,
+                src: 'www/img/*', dest: 'docs/img/'
+            },
+            views: {
+                expand: true,
+                flatten : true,
+                src: 'www/views/*', dest: 'docs/views'
             }
         },
 
@@ -56,6 +66,8 @@ module.exports = function(grunt) {
     grunt.registerTask('build',[
         'clean:before',
         'copy:html',
+        'copy:img',
+        'copy:views',
         'useminPrepare',
         'concat',
         'uglify',

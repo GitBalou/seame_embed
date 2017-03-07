@@ -38,7 +38,7 @@ seaMe.controller("carteCtrl",['$scope', 'smOl3Embed', 'smPSWGallery','$timeout',
 
         // on signale le nouveau mode
         $scope.mode="liste_navigations";
-    }
+    };
 
     // fonction d'affichage d'une nav dans la carte
     $scope.showNavigation= function(id_nav){
@@ -70,7 +70,7 @@ seaMe.controller("carteCtrl",['$scope', 'smOl3Embed', 'smPSWGallery','$timeout',
 
         // on signale le nouveau mode
         $scope.mode="show_navigation";
-    }
+    };
 
     // COMPORTEMENT DU CONTROLLER
     // démarrage de la carte
